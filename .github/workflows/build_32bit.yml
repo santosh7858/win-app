@@ -9,21 +9,15 @@ jobs:
     runs-on: windows-latest 
 
     steps:
-      # 1. Cloud PC mein Node.js install karega
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      # 2. Website ko App banane wala tool (Nativefier) download karega
-      - name: Install Nativefier Tool
-        run: npm install -g nativefier
-
-      # 3. Aapki website ko 32-bit app mein convert karega
+      # Yahan humne purana version (46.2.0) lagaya hai jo 32-bit support karta hai
       - name: Build App for 32-bit
-        run: nativefier --name "TodayVacancy" --platform "windows" --arch "ia32" "[https://todayvacancy.in](https://todayvacancy.in)"
+        run: npx nativefier@46.2.0 --name "TodayVacancy" --platform "windows" --arch "ia32" "https://todayvacancy.in"
 
-      # 4. Bani hui 32-bit .exe file ko aapke download ke liye dega
       - name: Upload 32-Bit .exe file
         uses: actions/upload-artifact@v4
         with:
