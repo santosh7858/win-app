@@ -1,0 +1,41 @@
+name: Build Windows PC App (.exe)
+
+# Yeh action tab chalega jab aap GitHub par button dabayenge
+on:
+  workflow_dispatch: 
+
+jobs:
+  build:
+    name: Build Windows App
+    # Yeh code cloud mein ek 64-bit Windows PC par chalega
+    runs-on: windows-latest 
+
+    steps:
+      # 1. Aapka code cloud PC mein layega
+      - name: Get source code
+        uses: actions/checkout@v4
+
+      # 2. Cloud PC mein Flutter install karega
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      # 3. Windows desktop setting ON karega
+      - name: Enable Windows Desktop
+        run: flutter config --enable-windows-desktop
+
+      # 4. Saare packages download karega
+      - name: Get Flutter Packages
+        run: flutter pub get
+
+      # 5. Final .exe file banayega (Jisme thoda time lagega)
+      - name: Build Windows .exe
+        run: flutter build windows --release
+
+      # 6. Bani hui .exe file ko aapke download ke liye zip karke dega
+      - name: Upload .exe file for Download
+        uses: actions/upload-artifact@v4
+        with:
+          name: TodayVacancy-PC-App
+          path: build\windows\runner\Release\*

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "351741498150",
+    "project_id": "todayvacancyapp",
+    "storage_bucket": "todayvacancyapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351741498150:android:b149c61eb2749f6c10e7e7",
+        "android_client_info": {
+          "package_name": "in.todayvacancy.alert"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDV70lAjY88rV-fjTYer3cQt7EUNWab6P4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
